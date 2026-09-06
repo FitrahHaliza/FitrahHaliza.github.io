@@ -1,0 +1,746 @@
+/* =====================================================
+   STYLE PORTOFOLIO FITRAH HALIZA
+   Tema: Pastel Purple - Pink - Blue
+   ===================================================== */
+
+/* ================= RESET ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #3f3850;
+  line-height: 1.7;
+
+  /* Background utama halaman */
+  background: linear-gradient(
+    135deg,
+    #eee5f7,
+    #f9e8f1,
+    #e7f0f8
+  );
+
+  background-attachment: fixed;
+}
+
+
+/* =====================================================
+   HEADER
+   ===================================================== */
+
+#header {
+  min-height: 330px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: white;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(91, 67, 130, 0.95),
+      rgba(180, 112, 165, 0.90)
+    ),
+    url("assets/images/background.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+#header h1 {
+  font-size: 48px;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+
+/* =====================================================
+   NAVIGASI
+   ===================================================== */
+
+nav {
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #f8eefb
+  );
+
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  box-shadow: 0 4px 15px rgba(70, 50, 90, 0.15);
+}
+
+#menu {
+  list-style: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+}
+
+#menu > li {
+  position: relative;
+}
+
+#menu a {
+  display: block;
+
+  padding: 16px 18px;
+
+  color: #5b4770;
+  text-decoration: none;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+#menu a:hover {
+  background: linear-gradient(
+    135deg,
+    #eadcf5,
+    #f5dce9
+  );
+
+  color: #714b87;
+}
+
+
+/* ================= DROPDOWN ================= */
+
+#menu li ul {
+  display: none;
+
+  position: absolute;
+
+  top: 100%;
+  left: 0;
+
+  min-width: 150px;
+
+  list-style: none;
+
+  background: linear-gradient(
+    135deg,
+    #f3e8fa,
+    #f9e5ef
+  );
+
+  border-radius: 0 0 12px 12px;
+
+  box-shadow: 0 8px 20px rgba(70, 50, 90, 0.15);
+
+  overflow: hidden;
+}
+
+#menu li:hover ul {
+  display: block;
+}
+
+#menu li ul a {
+  padding: 12px 16px;
+}
+
+
+/* =====================================================
+   SECTION UMUM
+   ===================================================== */
+
+.section {
+  width: 90%;
+  max-width: 1050px;
+
+  margin: 55px auto;
+  padding: 50px 55px;
+
+  /* INI YANG MEMBUAT KOTAK UTAMA BERWARNA */
+  background: linear-gradient(
+    135deg,
+    #f0e5f8,
+    #f9e5ef
+  );
+
+  border-radius: 25px;
+
+  border: 1px solid rgba(130, 95, 160, 0.18);
+
+  box-shadow:
+    0 12px 30px rgba(80, 60, 100, 0.15);
+
+  transition: 0.3s;
+}
+
+
+/* =====================================================
+   JUDUL
+   ===================================================== */
+
+.headline {
+  text-align: center;
+
+  color: #65447e;
+
+  font-size: 32px;
+
+  margin-bottom: 25px;
+}
+
+.headline::after {
+  content: "";
+
+  display: block;
+
+  width: 60px;
+  height: 4px;
+
+  margin: 10px auto;
+
+  background: linear-gradient(
+    90deg,
+    #9b6bb0,
+    #d58eae
+  );
+
+  border-radius: 10px;
+}
+
+
+/* =====================================================
+   TEKS
+   ===================================================== */
+
+.sublines {
+  color: #5d5666;
+  font-size: 16px;
+
+  text-align: justify;
+}
+
+.infotext {
+  color: #5d5666;
+
+  margin: 8px 0;
+}
+
+
+/* =====================================================
+   BERANDA
+   ===================================================== */
+
+#beranda {
+  background: linear-gradient(
+    135deg,
+    #e5d8f3,
+    #f7dfe9,
+    #e3edf7
+  );
+}
+
+.profile-card {
+  text-align: center;
+}
+
+
+/* FOTO PROFIL */
+
+#foto-profil {
+  width: 165px;
+  height: 165px;
+
+  object-fit: cover;
+
+  border-radius: 50%;
+
+  border: 6px solid rgba(255, 255, 255, 0.9);
+
+  box-shadow:
+    0 10px 25px rgba(80, 55, 100, 0.25);
+
+  margin-bottom: 15px;
+}
+
+
+/* KOTAK TEKS BERANDA */
+
+.beranda-text {
+  max-width: 720px;
+
+  margin: 25px auto 0;
+
+  padding: 22px 28px;
+
+  /* BUKAN PUTIH */
+  background: linear-gradient(
+    135deg,
+    rgba(228, 211, 240, 0.95),
+    rgba(248, 218, 231, 0.95)
+  );
+
+  border-left: 5px solid #9b6db0;
+
+  border-radius: 15px;
+
+  box-shadow:
+    0 6px 18px rgba(80, 55, 100, 0.10);
+}
+
+.beranda-text .sublines {
+  text-align: center;
+}
+
+
+/* =====================================================
+   TENTANG SAYA
+   ===================================================== */
+
+#tentang {
+  background: linear-gradient(
+    135deg,
+    #e3e4f7,
+    #f3def0,
+    #e2edf5
+  );
+}
+
+#tentang .headline:nth-of-type(2) {
+  margin-top: 45px;
+}
+
+
+/* Kotak pendidikan */
+
+#tentang .infotext {
+  padding: 13px 18px;
+
+  background: linear-gradient(
+    135deg,
+    #dddaf2,
+    #f1dce9
+  );
+
+  border-left: 5px solid #8763a2;
+
+  border-radius: 12px;
+
+  box-shadow:
+    0 5px 15px rgba(80, 60, 100, 0.08);
+}
+
+
+/* =====================================================
+   PROYEK
+   ===================================================== */
+
+#proyek {
+  background: linear-gradient(
+    135deg,
+    #f6dfe9,
+    #e8def6
+  );
+}
+
+
+/* Kotak Nexventory */
+
+.proyek-single {
+  max-width: 700px;
+
+  margin: auto;
+
+  padding: 30px;
+
+  text-align: center;
+
+  /* KOTAK PROYEK JUGA BERWARNA */
+  background: linear-gradient(
+    135deg,
+    #e5d5f0,
+    #f4d9e6
+  );
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(120, 80, 145, 0.20);
+
+  box-shadow:
+    0 10px 25px rgba(80, 55, 100, 0.14);
+
+  transition: 0.3s;
+}
+
+.proyek-single:hover {
+  transform: translateY(-7px);
+
+  box-shadow:
+    0 16px 30px rgba(80, 55, 100, 0.20);
+}
+
+.proyek-single h3 {
+  color: #68447d;
+
+  font-size: 26px;
+
+  margin-bottom: 8px;
+}
+
+
+/* Tombol proyek */
+
+.proyek-link {
+  display: inline-block;
+
+  margin-top: 18px;
+
+  padding: 11px 25px;
+
+  background: linear-gradient(
+    135deg,
+    #76529a,
+    #b56f9e
+  );
+
+  color: white;
+
+  text-decoration: none;
+
+  border-radius: 25px;
+
+  font-weight: 600;
+
+  transition: 0.3s;
+}
+
+.proyek-link:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 7px 15px rgba(80, 50, 100, 0.25);
+}
+
+
+/* =====================================================
+   SKILL
+   ===================================================== */
+
+#skill {
+  background: linear-gradient(
+    135deg,
+    #dfeaf4,
+    #eadcf5,
+    #f4dfe9
+  );
+}
+
+
+/* Dua kolom */
+
+.skill-grid {
+  display: grid;
+
+  grid-template-columns: repeat(2, 1fr);
+
+  gap: 25px;
+}
+
+
+/* Kotak Teknis & Aplikasi */
+
+.skill-kolom {
+  padding: 25px;
+
+  /* TIDAK PUTIH */
+  background: linear-gradient(
+    135deg,
+    #dcdcf2,
+    #f1dce9
+  );
+
+  border-radius: 20px;
+
+  border: 1px solid rgba(110, 80, 140, 0.18);
+
+  box-shadow:
+    0 8px 20px rgba(70, 55, 90, 0.12);
+
+  transition: 0.3s;
+}
+
+.skill-kolom:hover {
+  transform: translateY(-5px);
+
+  box-shadow:
+    0 13px 25px rgba(70, 55, 90, 0.18);
+}
+
+.skill-kolom h3 {
+  text-align: center;
+
+  color: #68477f;
+
+  font-size: 22px;
+
+  margin-bottom: 15px;
+}
+
+
+/* Daftar skill */
+
+.skill-list {
+  list-style: none;
+}
+
+.skill-list li {
+  margin: 10px 0;
+}
+
+.skill-list a {
+  display: block;
+
+  padding: 11px 16px;
+
+  /* Skill juga diberi warna */
+  background: linear-gradient(
+    135deg,
+    #eee4f5,
+    #f7e3ed
+  );
+
+  color: #5d4b6d;
+
+  text-decoration: none;
+
+  border-radius: 12px;
+
+  border: 1px solid rgba(120, 90, 145, 0.15);
+
+  transition: 0.3s;
+}
+
+.skill-list a:hover {
+  background: linear-gradient(
+    135deg,
+    #d7c4e8,
+    #ecc8d9
+  );
+
+  color: #56396b;
+
+  padding-left: 23px;
+}
+
+
+/* =====================================================
+   MOTTO
+   ===================================================== */
+
+#motto {
+  min-height: 320px;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  background:
+    linear-gradient(
+      rgba(91, 64, 112, 0.60),
+      rgba(177, 111, 153, 0.60)
+    ),
+    url("assets/images/background.jpg");
+
+  background-size: cover;
+
+  background-position: center;
+}
+
+
+/* Kotak motto */
+
+.motto-box {
+  max-width: 700px;
+
+  padding: 32px 40px;
+
+  background: rgba(224, 199, 225, 0.55);
+
+  border: 1px solid rgba(255, 255, 255, 0.4);
+
+  border-radius: 20px;
+
+  backdrop-filter: blur(8px);
+
+  text-align: center;
+
+  color: white;
+
+  box-shadow:
+    0 10px 30px rgba(50, 35, 60, 0.20);
+}
+
+.motto-box p {
+  font-size: 21px;
+
+  font-style: italic;
+
+  line-height: 1.8;
+}
+
+
+/* =====================================================
+   KONTAK
+   ===================================================== */
+
+#kontak {
+  text-align: center;
+
+  background: linear-gradient(
+    135deg,
+    #e7dcf4,
+    #f5dce9,
+    #dfeaf5
+  );
+}
+
+
+/* Kotak informasi kontak */
+
+#kontak .infotext {
+  display: inline-block;
+
+  margin: 8px;
+
+  padding: 13px 20px;
+
+  background: linear-gradient(
+    135deg,
+    #d9d9ee,
+    #f0d6e4
+  );
+
+  border-radius: 13px;
+
+  border: 1px solid rgba(110, 80, 140, 0.15);
+
+  box-shadow:
+    0 5px 15px rgba(70, 55, 90, 0.10);
+}
+
+
+/* =====================================================
+   RESPONSIVE TABLET
+   ===================================================== */
+
+@media (max-width: 768px) {
+
+  #header h1 {
+    font-size: 36px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  #menu {
+    flex-wrap: wrap;
+  }
+
+  #menu a {
+    padding: 11px 10px;
+
+    font-size: 14px;
+  }
+
+  .section {
+    width: 94%;
+
+    padding: 35px 25px;
+
+    margin: 35px auto;
+  }
+
+  .headline {
+    font-size: 27px;
+  }
+
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  #foto-profil {
+    width: 140px;
+    height: 140px;
+  }
+
+  .motto-box {
+    padding: 25px;
+  }
+
+  .motto-box p {
+    font-size: 18px;
+  }
+}
+
+
+/* =====================================================
+   RESPONSIVE HP
+   ===================================================== */
+
+@media (max-width: 480px) {
+
+  #header {
+    min-height: 270px;
+  }
+
+  #header h1 {
+    font-size: 30px;
+  }
+
+  #menu {
+    gap: 0;
+  }
+
+  #menu a {
+    padding: 9px 7px;
+
+    font-size: 13px;
+  }
+
+  .section {
+    padding: 30px 18px;
+  }
+
+  .headline {
+    font-size: 24px;
+  }
+
+  .sublines {
+    font-size: 14px;
+  }
+
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+}

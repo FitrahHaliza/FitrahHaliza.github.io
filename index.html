@@ -1,12 +1,138 @@
-index.html u
-index.html> html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portofolio - Fitrah Haliza</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+
+  <header id="header">
+    <div class="header-inner">
+      <h1>Fitrah Haliza</h1>
+      <p class="subtitle">Mahasiswa Teknik Komputer </p>
+    </div>
+  </header>
+
+  <!-- NAVIGASI: klik menu = scroll ke bagian dengan id yang sama -->
+  <nav>
+    <ul id="menu">
+      <li><a href="#beranda">Beranda</a></li>
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#proyek">Proyek</a></li>
+      <li><a href="#skill">Skill</a>
+        <ul>
+          <li><a href="#skill-teknis">Teknis</a></li>
+          <li><a href="#skill-aplikasi">Aplikasi</a></li>
+        </ul>
+      </li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- ======================================================
+       BAGIAN 1: BERANDA
+       ====================================================== -->
+  <section id="beranda" class="section beranda-section">
+    <div class="profile-card">
+      <img id="foto-profil" src="assets/images/profil.jpg" alt="Foto Profil">
+      <h2 class="headline">Fitrah Haliza</h2>
+      <p class="infotext">NIM: 250210500003</p>
+      <p class="infotext">Program Studi Teknik Komputer</p>
+
+      <div class="beranda-text">
+        <p class="sublines">
+          Halo! Saya Fitrah Haliza mahasiswa Teknik Komputer yang sedang belajar membangun
+          website. Silakan scroll ke bawah untuk melihat Tentang Saya, Proyek
+          yang sudah dibuat, Skill, dan cara menghubungi saya.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       BAGIAN 2: TENTANG
+       ====================================================== -->
+  <section id="tentang" class="section">
+    <h2 class="headline">Tentang Saya</h2>
+    <p class="sublines">
+      Namaku Fitrah Haliza tapi lebih sering dipanggil itta. Aku adalah
+      seseorang yang masih terus belajar dan mencari jati diriku sendiri.
+      Aku mungkin tidak selalu kuat, kadang aku bisa sedih, kecewa, dan
+      ragu. Tapi aku selalu berusaha untuk bangkit dan menjadi lebih kuat.
+      Aku punya banyak mimpi dan harapan yang ingin aku wujudkan. Aku
+      percaya bahwa setiap proses dalam hidupku punya makna. Aku mungkin
+      belum tahu akan menjadi seperti apa nantinya, tetapi aku ingin terus
+      melangkah dan menikmati setiap perjalanan yang Allah berikan.
+    </p>
+
+    <h2 class="headline">Pendidikan</h2>
+    <p class="infotext">2025 - Sekarang - Teknik Komputer, Universitas Negeri Makassar</p>
+    <p class="infotext">2023 - 2025 SMA NEGERI 11 ENREKANG</p>
+  </section>
+
+  <!-- ======================================================
+       BAGIAN 3: PROYEK
+       ====================================================== -->
+  <section id="proyek" class="section">
+    <h2 class="headline">Proyek</h2>
+
+    <div class="proyek-single">
+      <h3>Nexventory</h3>
+      <p class="infotext">
+        Aplikasi manajemen inventory berbasis web, proyek semester 1.
+      </p>
+      <a href="https://nexventory.up.railway.app/" target="_blank" rel="noopener noreferrer" class="proyek-link">
+        Lihat Proyek &rarr;
+      </a>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       BAGIAN 4: SKILL
+       ====================================================== -->
+  <section id="skill" class="section">
+    <h2 class="headline">Yang Saya Bisa</h2>
+
+    <!-- Layout 2 kolom: Teknis / Aplikasi -->
+    <div class="skill-grid">
+      <div class="skill-kolom" id="skill-teknis">
+        <h3>Teknis</h3>
+        <ul class="skill-list">
+          <li><a href="#">HTML</a></li>
+          <li><a href="#">CSS</a></li>
+        </ul>
+      </div>
+      <div class="skill-kolom" id="skill-aplikasi">
+        <h3>Aplikasi</h3>
+        <ul class="skill-list">
+          <li><a href="#">Microsoft Word</a></li>
+          <li><a href="#">Microsoft Excel</a></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       BAGIAN MOTTO: background-image + teks di box transparan
+       (Modul 4 - Tugas Mandiri no.2)
+       ====================================================== -->
+  <section id="motto" class="section motto-section">
+    <div class="motto-box">
+      <p>"Aku mungkin belum tahu akan menjadi seperti apa nantinya, tetapi aku ingin terus melangkah."</p>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       BAGIAN 5: KONTAK
+       ====================================================== -->
+  <section id="kontak" class="section">
+    <h2 class="headline">Hubungi Saya</h2>
+    <p class="infotext">Email: fitrahhaliza0@gmail.com</p>
+    <p class="infotext">No. HP: 082399103153</p>
+    <p class="infotext">Enrekang, Sulawesi Selatan</p>
+  </section>
+
 </body>
 </html>
