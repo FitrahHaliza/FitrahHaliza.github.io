@@ -4,33 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portofolio - Fitrah Haliza</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 
   <header id="header">
+    <div class="floating-shapes">
+      <span class="shape shape1"></span>
+      <span class="shape shape2"></span>
+      <span class="shape shape3"></span>
+      <span class="shape shape4"></span>
+    </div>
     <div class="header-inner">
       <h1>Fitrah Haliza</h1>
       <p class="subtitle">Mahasiswa Teknik Komputer </p>
     </div>
   </header>
 
-  <nav>
-    <ul id="menu">
-      <li><a href="#beranda">Beranda</a></li>
-      <li><a href="#tentang">Tentang</a></li>
-      <li><a href="#proyek">Proyek</a></li>
-      <li><a href="#skill">Skill</a>
-        <ul>
-          <li><a href="#skill-teknis">Teknis</a></li>
-          <li><a href="#skill-aplikasi">Aplikasi</a></li>
-        </ul>
-      </li>
-      <li><a href="#kontak">Kontak</a></li>
-    </ul>
+  <div id="scroll-progress"></div>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <button id="menu-toggle" class="menu-toggle" aria-label="Buka menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul id="menu">
+        <li><a href="#beranda">Beranda</a></li>
+        <li><a href="#tentang">Tentang</a></li>
+        <li><a href="#proyek">Proyek</a></li>
+        <li><a href="#skill">Skill</a>
+          <ul>
+            <li><a href="#skill-teknis">Teknis</a></li>
+            <li><a href="#skill-aplikasi">Aplikasi</a></li>
+          </ul>
+        </li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Ganti tema warna">🎨</button>
+    </div>
   </nav>
 
-  <section id="beranda" class="section beranda-section">
+  <section id="beranda" class="section beranda-section reveal">
     <div class="profile-card">
       <img id="foto-profil" src="assets/images/profil.jpg" alt="Foto Profil">
       <h2 class="headline">Fitrah Haliza</h2>
@@ -44,10 +63,17 @@
           yang sudah dibuat, Skill, dan cara menghubungi saya.
         </p>
       </div>
+
+      <p class="typing-text">
+        <span id="typing-output"></span><span class="typing-cursor">|</span>
+      </p>
+
+      <button id="sapa-btn" class="sapa-btn">Sapa Saya 👋</button>
+      <p id="sapa-output" class="sapa-output"></p>
     </div>
   </section>
 
-  <section id="tentang" class="section">
+  <section id="tentang" class="section reveal">
     <h2 class="headline">Tentang Saya</h2>
     <p class="sublines">
       Namaku Fitrah Haliza tapi lebih sering dipanggil itta. Aku adalah
@@ -65,11 +91,16 @@
     <p class="infotext">2023 - 2025 SMA NEGERI 11 ENREKANG</p>
   </section>
 
-  <section id="proyek" class="section">
+  <section id="proyek" class="section reveal">
     <h2 class="headline">Proyek</h2>
 
     <div class="proyek-single">
       <h3>Nexventory</h3>
+      <div class="proyek-tags">
+        <span class="tag">Web App</span>
+        <span class="tag">Semester 1</span>
+        <span class="tag">Inventory Management</span>
+      </div>
       <p class="infotext">
         Aplikasi manajemen inventory berbasis web, proyek semester 1.
       </p>
@@ -79,7 +110,7 @@
     </div>
   </section>
 
-  <section id="skill" class="section">
+  <section id="skill" class="section reveal">
     <h2 class="headline">Yang Saya Bisa</h2>
 
     <!-- Layout 2 kolom: Teknis / Aplikasi -->
@@ -87,32 +118,35 @@
       <div class="skill-kolom" id="skill-teknis">
         <h3>Teknis</h3>
         <ul class="skill-list">
-          <li><a href="#">HTML</a></li>
-          <li><a href="#">CSS</a></li>
+          <li><a href="#"><span class="skill-icon">🌐</span> HTML</a></li>
+          <li><a href="#"><span class="skill-icon">🎨</span> CSS</a></li>
         </ul>
       </div>
       <div class="skill-kolom" id="skill-aplikasi">
         <h3>Aplikasi</h3>
         <ul class="skill-list">
-          <li><a href="#">Microsoft Word</a></li>
-          <li><a href="#">Microsoft Excel</a></li>
+          <li><a href="#"><span class="skill-icon">📄</span> Microsoft Word</a></li>
+          <li><a href="#"><span class="skill-icon">📊</span> Microsoft Excel</a></li>
         </ul>
       </div>
     </div>
   </section>
 
-  <section id="motto" class="section motto-section">
+  <section id="motto" class="section motto-section reveal">
     <div class="motto-box">
       <p>"Aku mungkin belum tahu akan menjadi seperti apa nantinya, tetapi aku ingin terus melangkah."</p>
     </div>
   </section>
-  
-  <section id="kontak" class="section">
+
+  <section id="kontak" class="section reveal">
     <h2 class="headline">Hubungi Saya</h2>
     <p class="infotext">Email: fitrahhaliza0@gmail.com</p>
     <p class="infotext">No. HP: 082399103153</p>
     <p class="infotext">Enrekang, Sulawesi Selatan</p>
   </section>
 
+  <button id="back-to-top" class="back-to-top" aria-label="Kembali ke atas">&uarr;</button>
+
+  <script src="navbar.js"></script>
 </body>
 </html>

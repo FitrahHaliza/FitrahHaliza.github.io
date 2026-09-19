@@ -1,9 +1,9 @@
-/* =====================================================
-   STYLE PORTOFOLIO FITRAH HALIZA
-   Tema: Pastel Purple - Pink - Blue
-   ===================================================== */
 
-/* ================= RESET ================= */
+   STYLE PORTOFOLIO FITRAH HALIZA
+
+
+
+
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
   color: #3f3850;
   line-height: 1.7;
 
@@ -28,12 +28,9 @@ body {
   );
 
   background-attachment: fixed;
+
+  transition: background 0.4s ease;
 }
-
-
-/* =====================================================
-   HEADER
-   ===================================================== */
 
 #header {
   min-height: 330px;
@@ -62,8 +59,29 @@ body {
 
 #header h1 {
   font-size: 48px;
+  font-weight: 800;
   letter-spacing: 1px;
   margin-bottom: 5px;
+
+  background: linear-gradient(
+    90deg,
+    #ffffff,
+    #f6d9ec,
+    #ffffff
+  );
+
+  background-size: 200% auto;
+
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shineText 5s linear infinite;
+}
+
+@keyframes shineText {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
 }
 
 .subtitle {
@@ -72,9 +90,100 @@ body {
 }
 
 
-/* =====================================================
-   NAVIGASI
-   ===================================================== */
+.floating-shapes {
+  position: absolute;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+  z-index: 0;
+}
+
+.shape {
+  position: absolute;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.12);
+
+  animation: floatShape 10s ease-in-out infinite;
+}
+
+.shape1 {
+  width: 90px;
+  height: 90px;
+
+  top: 15%;
+  left: 8%;
+
+  animation-duration: 9s;
+}
+
+.shape2 {
+  width: 50px;
+  height: 50px;
+
+  top: 60%;
+  left: 20%;
+
+  animation-duration: 7s;
+  animation-delay: 1s;
+}
+
+.shape3 {
+  width: 120px;
+  height: 120px;
+
+  top: 20%;
+  right: 10%;
+
+  animation-duration: 11s;
+  animation-delay: 0.5s;
+}
+
+.shape4 {
+  width: 65px;
+  height: 65px;
+
+  bottom: 12%;
+  right: 22%;
+
+  animation-duration: 8s;
+  animation-delay: 1.5s;
+}
+
+@keyframes floatShape {
+  0%, 100% {
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  50% {
+    transform: translateY(-25px) translateX(15px) scale(1.08);
+  }
+}
+
+.header-inner {
+  position: relative;
+  z-index: 1;
+}
+
+#scroll-progress {
+  position: sticky;
+  top: 0;
+
+  height: 4px;
+  width: 0%;
+
+  background: linear-gradient(
+    90deg,
+    #9b6bb0,
+    #d58eae
+  );
+
+  z-index: 1001;
+
+  transition: width 0.1s ease-out;
+}
 
 nav {
   background: linear-gradient(
@@ -88,6 +197,45 @@ nav {
   z-index: 1000;
 
   box-shadow: 0 4px 15px rgba(70, 50, 90, 0.15);
+
+  transition: transform 0.3s ease;
+}
+nav.nav-hidden {
+  transform: translateY(-100%);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 10px;
+}
+
+.theme-toggle {
+  width: 38px;
+  height: 38px;
+
+  border: none;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #eadcf5,
+    #f5dce9
+  );
+
+  font-size: 17px;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+
+  flex-shrink: 0;
+}
+
+.theme-toggle:hover {
+  transform: rotate(20deg) scale(1.08);
 }
 
 #menu {
@@ -127,9 +275,6 @@ nav {
   color: #714b87;
 }
 
-
-/* ================= DROPDOWN ================= */
-
 #menu li ul {
   display: none;
 
@@ -163,10 +308,118 @@ nav {
   padding: 12px 16px;
 }
 
+#menu a.active {
+  background: linear-gradient(
+    135deg,
+    #d7c4e8,
+    #ecc8d9
+  );
 
-/* =====================================================
-   SECTION UMUM
-   ===================================================== */
+  color: #56396b;
+}
+
+.menu-toggle {
+  display: none;
+
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+
+  width: 40px;
+  height: 40px;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  z-index: 1100;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 26px;
+  height: 3px;
+
+  background: #714b87;
+  border-radius: 3px;
+
+  transition: 0.3s ease;
+}
+.menu-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+.back-to-top {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  border-radius: 50%;
+
+  background: linear-gradient(
+    135deg,
+    #76529a,
+    #b56f9e
+  );
+
+  color: white;
+  font-size: 20px;
+
+  cursor: pointer;
+
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+
+  box-shadow: 0 8px 20px rgba(80, 50, 100, 0.30);
+
+  transition: 0.3s ease;
+
+  z-index: 999;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(80, 50, 100, 0.35);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .section {
   width: 90%;
@@ -174,8 +427,6 @@ nav {
 
   margin: 55px auto;
   padding: 50px 55px;
-
-  /* INI YANG MEMBUAT KOTAK UTAMA BERWARNA */
   background: linear-gradient(
     135deg,
     #f0e5f8,
@@ -192,10 +443,11 @@ nav {
   transition: 0.3s;
 }
 
-
-/* =====================================================
-   JUDUL
-   ===================================================== */
+.section,
+#skill-teknis,
+#skill-aplikasi {
+  scroll-margin-top: 75px;
+}
 
 .headline {
   text-align: center;
@@ -226,11 +478,6 @@ nav {
   border-radius: 10px;
 }
 
-
-/* =====================================================
-   TEKS
-   ===================================================== */
-
 .sublines {
   color: #5d5666;
   font-size: 16px;
@@ -244,11 +491,6 @@ nav {
   margin: 8px 0;
 }
 
-
-/* =====================================================
-   BERANDA
-   ===================================================== */
-
 #beranda {
   background: linear-gradient(
     135deg,
@@ -261,9 +503,6 @@ nav {
 .profile-card {
   text-align: center;
 }
-
-
-/* FOTO PROFIL */
 
 #foto-profil {
   width: 165px;
@@ -280,9 +519,6 @@ nav {
 
   margin-bottom: 15px;
 }
-
-
-/* KOTAK TEKS BERANDA */
 
 .beranda-text {
   max-width: 720px;
@@ -310,10 +546,110 @@ nav {
   text-align: center;
 }
 
+.typing-text {
+  margin-top: 25px;
 
-/* =====================================================
-   TENTANG SAYA
-   ===================================================== */
+  font-size: 18px;
+  font-weight: 600;
+
+  color: #714b87;
+
+  min-height: 28px;
+}
+
+.typing-cursor {
+  display: inline-block;
+
+  margin-left: 2px;
+
+  animation: blink 0.8s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.sapa-btn {
+  margin-top: 20px;
+
+  padding: 12px 28px;
+
+  border: none;
+  border-radius: 25px;
+
+  background: linear-gradient(
+    135deg,
+    #76529a,
+    #b56f9e
+  );
+
+  color: white;
+
+  font-family: "Poppins", "Segoe UI", Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+  animation: sapaPulse 2.2s ease-in-out infinite;
+}
+
+@keyframes sapaPulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(181, 111, 158, 0.45);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(181, 111, 158, 0);
+  }
+}
+
+.sapa-btn.sudah-ditekan {
+  animation: none;
+}
+
+.sapa-btn:hover {
+  transform: translateY(-3px);
+
+  box-shadow: 0 8px 18px rgba(80, 50, 100, 0.30);
+}
+
+.sapa-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+.sapa-btn.pressed {
+  animation: pop 0.35s ease;
+}
+
+@keyframes pop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(0.9); }
+  70%  { transform: scale(1.06); }
+  100% { transform: scale(1); }
+}
+
+.sapa-output {
+  margin-top: 14px;
+
+  min-height: 24px;
+
+  font-size: 16px;
+  font-style: italic;
+
+  color: #5b4770;
+
+  opacity: 0;
+  transform: translateY(-6px);
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.sapa-output.show {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 #tentang {
   background: linear-gradient(
@@ -327,9 +663,6 @@ nav {
 #tentang .headline:nth-of-type(2) {
   margin-top: 45px;
 }
-
-
-/* Kotak pendidikan */
 
 #tentang .infotext {
   padding: 13px 18px;
@@ -348,11 +681,6 @@ nav {
     0 5px 15px rgba(80, 60, 100, 0.08);
 }
 
-
-/* =====================================================
-   PROYEK
-   ===================================================== */
-
 #proyek {
   background: linear-gradient(
     135deg,
@@ -360,9 +688,6 @@ nav {
     #e8def6
   );
 }
-
-
-/* Kotak Nexventory */
 
 .proyek-single {
   max-width: 700px;
@@ -405,8 +730,34 @@ nav {
   margin-bottom: 8px;
 }
 
+.proyek-tags {
+  display: flex;
 
-/* Tombol proyek */
+  flex-wrap: wrap;
+
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-bottom: 14px;
+}
+
+.tag {
+  display: inline-block;
+
+  padding: 5px 14px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  color: #76529a;
+
+  background: rgba(255, 255, 255, 0.55);
+
+  border: 1px solid rgba(120, 80, 145, 0.25);
+
+  border-radius: 20px;
+}
 
 .proyek-link {
   display: inline-block;
@@ -439,11 +790,6 @@ nav {
     0 7px 15px rgba(80, 50, 100, 0.25);
 }
 
-
-/* =====================================================
-   SKILL
-   ===================================================== */
-
 #skill {
   background: linear-gradient(
     135deg,
@@ -469,8 +815,6 @@ nav {
 
 .skill-kolom {
   padding: 25px;
-
-  /* TIDAK PUTIH */
   background: linear-gradient(
     135deg,
     #dcdcf2,
@@ -504,9 +848,6 @@ nav {
   margin-bottom: 15px;
 }
 
-
-/* Daftar skill */
-
 .skill-list {
   list-style: none;
 }
@@ -516,11 +857,11 @@ nav {
 }
 
 .skill-list a {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
   padding: 11px 16px;
-
-  /* Skill juga diberi warna */
   background: linear-gradient(
     135deg,
     #eee4f5,
@@ -538,6 +879,10 @@ nav {
   transition: 0.3s;
 }
 
+.skill-icon {
+  font-size: 18px;
+}
+
 .skill-list a:hover {
   background: linear-gradient(
     135deg,
@@ -549,11 +894,6 @@ nav {
 
   padding-left: 23px;
 }
-
-
-/* =====================================================
-   MOTTO
-   ===================================================== */
 
 #motto {
   min-height: 320px;
@@ -575,9 +915,6 @@ nav {
 
   background-position: center;
 }
-
-
-/* Kotak motto */
 
 .motto-box {
   max-width: 700px;
@@ -663,14 +1000,35 @@ nav {
     font-size: 16px;
   }
 
+  .menu-toggle {
+    display: flex;
+  }
+
+  .nav-inner {
+    justify-content: flex-start;
+    padding: 8px 0;
+  }
+
   #menu {
-    flex-wrap: wrap;
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  #menu.show {
+    display: flex;
   }
 
   #menu a {
-    padding: 11px 10px;
+    padding: 14px 20px;
+    font-size: 15px;
+  }
 
-    font-size: 14px;
+  #menu li ul {
+    position: static;
+    box-shadow: none;
+    border-radius: 0;
   }
 
   .section {
@@ -718,12 +1076,8 @@ nav {
     font-size: 30px;
   }
 
-  #menu {
-    gap: 0;
-  }
-
   #menu a {
-    padding: 9px 7px;
+    padding: 12px 18px;
 
     font-size: 13px;
   }
@@ -743,4 +1097,177 @@ nav {
   .skill-grid {
     grid-template-columns: 1fr;
   }
+
+  .back-to-top {
+    right: 15px;
+    bottom: 15px;
+
+    width: 42px;
+    height: 42px;
+  }
+}
+
+.section,
+#skill-teknis,
+#skill-aplikasi {
+  scroll-margin-top: 55px;
+}
+
+
+/* =====================================================
+   TEMA WARNA (diganti lewat tombol 🎨, dari navbar.js)
+   Tersedia: ungu (default), biru, sunset
+   ===================================================== */
+
+/* ---------- TEMA BIRU-TEAL ---------- */
+
+body[data-theme="biru"] #header {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(30, 75, 110, 0.95),
+      rgba(60, 150, 165, 0.90)
+    ),
+    url("assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+body[data-theme="biru"] #menu a:hover {
+  background: linear-gradient(135deg, #d5eef0, #dbeafd);
+  color: #1c6e7a;
+}
+
+body[data-theme="biru"] #menu a.active {
+  background: linear-gradient(135deg, #bfe6ea, #c7ddf7);
+  color: #17545e;
+}
+
+body[data-theme="biru"] .headline {
+  color: #1d6e7a;
+}
+
+body[data-theme="biru"] .headline::after {
+  background: linear-gradient(90deg, #2c93a3, #4fb8c7);
+}
+
+body[data-theme="biru"] #beranda,
+body[data-theme="biru"] #tentang,
+body[data-theme="biru"] #proyek,
+body[data-theme="biru"] #skill,
+body[data-theme="biru"] #kontak {
+  background: linear-gradient(135deg, #dff2f4, #dcecf9, #e4f6f3);
+}
+
+body[data-theme="biru"] .beranda-text {
+  border-left-color: #2c93a3;
+}
+
+body[data-theme="biru"] .proyek-link,
+body[data-theme="biru"] .sapa-btn,
+body[data-theme="biru"] .back-to-top,
+body[data-theme="biru"] #scroll-progress {
+  background: linear-gradient(135deg, #1d7a8c, #4fb8c7);
+}
+
+body[data-theme="biru"] .tag {
+  color: #1d7a8c;
+}
+
+body[data-theme="biru"] .skill-list a:hover {
+  background: linear-gradient(135deg, #bfe6ea, #c7ddf7);
+  color: #17545e;
+}
+
+body[data-theme="biru"] .typing-text,
+body[data-theme="biru"] .sapa-output {
+  color: #1d7a8c;
+}
+
+body[data-theme="biru"] #motto {
+  background:
+    linear-gradient(
+      rgba(25, 70, 95, 0.6),
+      rgba(60, 150, 165, 0.6)
+    ),
+    url("assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+
+/* ---------- TEMA SUNSET (ORANYE-MERAH MUDA) ---------- */
+
+body[data-theme="sunset"] #header {
+  background:
+    linear-gradient(
+      135deg,
+      rgba(150, 60, 40, 0.95),
+      rgba(220, 120, 70, 0.90)
+    ),
+    url("assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+body[data-theme="sunset"] #menu a:hover {
+  background: linear-gradient(135deg, #fbe2d3, #fbdad0);
+  color: #a5451f;
+}
+
+body[data-theme="sunset"] #menu a.active {
+  background: linear-gradient(135deg, #f6c9ac, #f4bfad);
+  color: #8a3a1a;
+}
+
+body[data-theme="sunset"] .headline {
+  color: #b3521f;
+}
+
+body[data-theme="sunset"] .headline::after {
+  background: linear-gradient(90deg, #d9752f, #f0a45c);
+}
+
+body[data-theme="sunset"] #beranda,
+body[data-theme="sunset"] #tentang,
+body[data-theme="sunset"] #proyek,
+body[data-theme="sunset"] #skill,
+body[data-theme="sunset"] #kontak {
+  background: linear-gradient(135deg, #fbe9df, #fce3df, #fdefe0);
+}
+
+body[data-theme="sunset"] .beranda-text {
+  border-left-color: #d9752f;
+}
+
+body[data-theme="sunset"] .proyek-link,
+body[data-theme="sunset"] .sapa-btn,
+body[data-theme="sunset"] .back-to-top,
+body[data-theme="sunset"] #scroll-progress {
+  background: linear-gradient(135deg, #c1571f, #f0a45c);
+}
+
+body[data-theme="sunset"] .tag {
+  color: #c1571f;
+}
+
+body[data-theme="sunset"] .skill-list a:hover {
+  background: linear-gradient(135deg, #f6c9ac, #f4bfad);
+  color: #8a3a1a;
+}
+
+body[data-theme="sunset"] .typing-text,
+body[data-theme="sunset"] .sapa-output {
+  color: #c1571f;
+}
+
+body[data-theme="sunset"] #motto {
+  background:
+    linear-gradient(
+      rgba(130, 55, 35, 0.6),
+      rgba(220, 120, 70, 0.6)
+    ),
+    url("assets/images/background.jpg");
+  background-size: cover;
+  background-position: center;
 }
