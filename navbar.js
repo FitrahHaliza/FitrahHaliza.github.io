@@ -67,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function () {
       el.classList.add("visible");
     });
   }
-
   const typingOutput = document.getElementById("typing-output");
 
   const kalimatTyping = [
@@ -203,14 +202,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   } catch (e) {
   }
-
   if (themeToggle) {
     themeToggle.addEventListener("click", function () {
       const indexSekarang = daftarTema.indexOf(temaSekarang);
       temaSekarang = daftarTema[(indexSekarang + 1) % daftarTema.length];
-
       terapkanTemaWarna(temaSekarang);
-
       try {
         localStorage.setItem(KUNCI_TEMA, temaSekarang);
       } catch (e) {
