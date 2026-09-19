@@ -1,37 +1,25 @@
-
-   STYLE PORTOFOLIO FITRAH HALIZA
-
-
-
-
+STYLE PORTOFOLIO FITRAH HALIZA
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 html {
   scroll-behavior: smooth;
 }
-
 body {
   font-family: "Poppins", "Segoe UI", Arial, sans-serif;
   color: #3f3850;
   line-height: 1.7;
-
-  /* Background utama halaman */
   background: linear-gradient(
     135deg,
     #eee5f7,
     #f9e8f1,
     #e7f0f8
   );
-
   background-attachment: fixed;
-
   transition: background 0.4s ease;
 }
-
 #header {
   min-height: 330px;
 
