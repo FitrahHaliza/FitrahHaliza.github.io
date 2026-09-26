@@ -1,217 +1,154 @@
-document.addEventListener("DOMContentLoaded", function () {
-
-  const menuToggle = document.getElementById("menu-toggle");
-  const menu = document.getElementById("menu");
-
-  if (menuToggle && menu) {
-    menuToggle.addEventListener("click", function () {
-      menu.classList.toggle("show");
-      menuToggle.classList.toggle("active");
-
-      const isOpen = menu.classList.contains("show");
-      menuToggle.setAttribute("aria-expanded", isOpen);
+document.addEventListener('DOMContentLoaded', () => {
+  const scrollProgress = document.getElementById('scroll-progress');
+  function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const percent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    if (scrollProgress) scrollProgress.style.width = percent + '%';
+  }
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  function handleNavHide() {
+    const currentScroll = window.scrollY;
+    if (navbar) {
+      if (currentScroll > lastScroll && currentScroll > 120) {
+        navbar.classList.add('nav-hidden');
+      } else {
+        navbar.classList.remove('nav-hidden');
+      }
+    }
+    lastScroll = currentScroll;
+  }
+  const sections = document.querySelectorAll('section[id]');
+  const menuLinks = document.querySelectorAll('#menu > li > a');
+  function updateActiveLink() {
+    let current = '';
+    sections.forEach((section) => {
+      const top = section.offsetTop - 90;
+      if (window.scrollY >= top) current = section.id;
     });
-    menu.querySelectorAll("a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        menu.classList.remove("show");
-        menuToggle.classList.remove("active");
-        menuToggle.setAttribute("aria-expanded", "false");
+    menuLinks.forEach((link) => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === '#' + current) {
+        link.classList.add('active');
+      }
+    });
+  }
+  const backToTop = document.getElementById('back-to-top');
+  function toggleBackToTop() {
+    if (!backToTop) return;
+    if (window.scrollY > 400) backToTop.classList.add('show');
+    else backToTop.classList.remove('show');
+  }
+  if (backToTop) {
+    backToTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+  window.addEventListener('scroll', () => {
+    updateScrollProgress();
+    handleNavHide();
+    updateActiveLink();
+    toggleBackToTop();
+  });
+  updateScrollProgress();
+  updateActiveLink();
+  toggleBackToTop();
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+      menu.classList.toggle('show');
+      menuToggle.classList.toggle('active');
+      const isOpen = menu.classList.contains('show');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+    });
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('show');
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
       });
     });
   }
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("#menu a[href^='#']");
-
-  function setActiveLink(id) {
-    navLinks.forEach(function (link) {
-      link.classList.toggle("active", link.getAttribute("href") === "#" + id);
+  const themeToggle = document.getElementById('theme-toggle');
+  const themes = ['ungu', 'biru', 'sunset'];
+  const savedTheme = localStorage.getItem('portofolio-theme');
+  if (savedTheme && savedTheme !== 'ungu' && themes.includes(savedTheme)) {
+    document.body.setAttribute('data-theme', savedTheme);
+  }
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const currentTheme = document.body.getAttribute('data-theme') || 'ungu';
+      const currentIndex = themes.indexOf(currentTheme);
+      const nextTheme = themes[(currentIndex + 1) % themes.length];
+      if (nextTheme === 'ungu') {
+        document.body.removeAttribute('data-theme');
+      } else {
+        document.body.setAttribute('data-theme', nextTheme);
+      }
+      localStorage.setItem('portofolio-theme', nextTheme);
     });
   }
-
-  if ("IntersectionObserver" in window && sections.length) {
-    const sectionObserver = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            setActiveLink(entry.target.id);
-          }
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-    );
-
-    sections.forEach(function (section) {
-      sectionObserver.observe(section);
-    });
-  }
-  const revealEls = document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window && revealEls.length) {
+  const revealElements = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
     const revealObserver = new IntersectionObserver(
-      function (entries, observer) {
-        entries.forEach(function (entry) {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
+            entry.target.classList.add('visible');
           }
         });
       },
       { threshold: 0.15 }
     );
-
-    revealEls.forEach(function (el) {
-      revealObserver.observe(el);
-    });
+    revealElements.forEach((el) => revealObserver.observe(el));
   } else {
-    revealEls.forEach(function (el) {
-      el.classList.add("visible");
-    });
+    revealElements.forEach((el) => el.classList.add('visible'));
   }
-  const typingOutput = document.getElementById("typing-output");
+  const typingOutput = document.getElementById('typing-output');
+  const typingWords = ['Mahasiswa Teknik Komputer', 'Suka Belajar Web Development', 'Fitrah Haliza'];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
 
-  const kalimatTyping = [
-    "Beranda",
-    "Tentang Saya",
-    "Pendidikan",
-    "Proyek",
-    "Yang Saya Bisa",
-    "Hubungi Saya"
-  ];
+  function typeLoop() {
+    const currentWord = typingWords[wordIndex];
 
-  if (typingOutput) {
-    let indexKalimat = 0;
-    let indexHuruf = 0;
-    let sedangMenghapus = false;
-
-    function jalankanTyping() {
-      const kalimatSekarang = kalimatTyping[indexKalimat];
-
-      if (!sedangMenghapus) {
-        indexHuruf++;
-        typingOutput.textContent = kalimatSekarang.slice(0, indexHuruf);
-
-        if (indexHuruf === kalimatSekarang.length) {
-          sedangMenghapus = true;
-          setTimeout(jalankanTyping, 1500);
-          return;
-        }
-      } else {
-        indexHuruf--;
-        typingOutput.textContent = kalimatSekarang.slice(0, indexHuruf);
-
-        if (indexHuruf === 0) {
-          sedangMenghapus = false;
-          indexKalimat = (indexKalimat + 1) % kalimatTyping.length;
-        }
+    if (!isDeleting) {
+      typingOutput.textContent = currentWord.substring(0, charIndex + 1);
+      charIndex++;
+      if (charIndex === currentWord.length) {
+        isDeleting = true;
+        setTimeout(typeLoop, 1500);
+        return;
       }
-
-      const kecepatan = sedangMenghapus ? 40 : 80;
-      setTimeout(jalankanTyping, kecepatan);
+    } else {
+      typingOutput.textContent = currentWord.substring(0, charIndex - 1);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % typingWords.length;
+      }
     }
-
-    jalankanTyping();
+    setTimeout(typeLoop, isDeleting ? 60 : 100);
   }
-  const sapaBtn = document.getElementById("sapa-btn");
-  const sapaOutput = document.getElementById("sapa-output");
-
-  const daftarSapaan = [
-    "Selamat datang di portofolio saya!"
+  if (typingOutput) typeLoop();
+  const sapaBtn = document.getElementById('sapa-btn');
+  const sapaOutput = document.getElementById('sapa-output');
+  const sapaMessages = [
+    'Halo juga! Terima kasih sudah mampir 👋',
+    'Senang bertemu denganmu di sini! 😊',
+    'Semoga harimu menyenangkan! ✨',
   ];
 
   if (sapaBtn && sapaOutput) {
-    let jumlahDitekan = 0;
-
-    sapaBtn.addEventListener("click", function () {
-      const pesan = daftarSapaan[jumlahDitekan % daftarSapaan.length];
-      jumlahDitekan++;
-
-      sapaOutput.textContent = pesan;
-      sapaOutput.classList.add("show");
-      sapaBtn.classList.add("sudah-ditekan");
-
-      sapaBtn.classList.remove("pressed");
-      void sapaBtn.offsetWidth;
-      sapaBtn.classList.add("pressed");
+    sapaBtn.addEventListener('click', () => {
+      sapaBtn.classList.add('sudah-ditekan', 'pressed');
+      setTimeout(() => sapaBtn.classList.remove('pressed'), 350);
+      const randomMsg = sapaMessages[Math.floor(Math.random() * sapaMessages.length)];
+      sapaOutput.textContent = randomMsg;
+      sapaOutput.classList.add('show');
     });
   }
-  const backToTop = document.getElementById("back-to-top");
-
-  if (backToTop) {
-    window.addEventListener("scroll", function () {
-      if (window.scrollY > 350) {
-        backToTop.classList.add("show");
-      } else {
-        backToTop.classList.remove("show");
-      }
-    });
-
-    backToTop.addEventListener("click", function () {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  }
-  const scrollProgress = document.getElementById("scroll-progress");
-
-  function updateProgressBar() {
-    const tinggiHalaman = document.documentElement.scrollHeight - window.innerHeight;
-    const persen = tinggiHalaman > 0 ? (window.scrollY / tinggiHalaman) * 100 : 0;
-
-    if (scrollProgress) {
-      scrollProgress.style.width = persen + "%";
-    }
-  }
-
-  if (scrollProgress) {
-    window.addEventListener("scroll", updateProgressBar);
-    window.addEventListener("resize", updateProgressBar);
-    updateProgressBar();
-  }
-  const navbar = document.getElementById("navbar");
-  let posisiScrollTerakhir = window.scrollY;
-
-  if (navbar) {
-    window.addEventListener("scroll", function () {
-      const posisiSekarang = window.scrollY;
-
-      if (posisiSekarang > posisiScrollTerakhir && posisiSekarang > 120) {
-        navbar.classList.add("nav-hidden");
-      } else {
-        // Scroll ke atas -> tampilkan navbar lagi
-        navbar.classList.remove("nav-hidden");
-      }
-
-      posisiScrollTerakhir = posisiSekarang;
-    });
-  }
-  const themeToggle = document.getElementById("theme-toggle");
-  const KUNCI_TEMA = "portofolio-tema-warna";
-  const daftarTema = ["ungu", "biru", "sunset"];
-
-  function terapkanTemaWarna(tema) {
-    if (tema === "ungu") {
-      document.body.removeAttribute("data-theme");
-    } else {
-      document.body.setAttribute("data-theme", tema);
-    }
-  }
-  let temaSekarang = "ungu";
-  try {
-    const temaTersimpan = localStorage.getItem(KUNCI_TEMA);
-    if (temaTersimpan && daftarTema.includes(temaTersimpan)) {
-      temaSekarang = temaTersimpan;
-      terapkanTemaWarna(temaSekarang);
-    }
-  } catch (e) {
-  }
-  if (themeToggle) {
-    themeToggle.addEventListener("click", function () {
-      const indexSekarang = daftarTema.indexOf(temaSekarang);
-      temaSekarang = daftarTema[(indexSekarang + 1) % daftarTema.length];
-      terapkanTemaWarna(temaSekarang);
-      try {
-        localStorage.setItem(KUNCI_TEMA, temaSekarang);
-      } catch (e) {
-      }
-    });
-  }
-
 });
